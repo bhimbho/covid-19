@@ -1,14 +1,33 @@
 <!DOCTYPE html>
-<html>
+<html lang="en-US">
 <head>
 	<title>Covid-19 Estimator</title>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
-	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+	<meta name="description" content= "Covid-19 Estimator for SDG Assessment">
 </head>
+<style type="text/css">
+	.side{
+    background-image: url('images/estimator.webp');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+}
+.form-control:focus{
+    box-shadow: none;
+    border-color: grey;
+}
+.div2{
+    display: none;
+}
+@media(max-width: 575px){
+    .side{
+        background-image: 
+    }
+</style>
 <body>
 	<nav class="navbar navbar-light bg-dark">
 		  <a class="navbar-brand text-white" href="#">
@@ -21,23 +40,23 @@
 		<div class="col-md-5  mt-5">
 			<div class="col-md-8 offset-md-2 mt-5">		
 				<h3><i class="fa fa-sticky-note"></i>Sample Data Collector</h3><hr>
-				<form action="" method="post">
+				<form action="" method="post" id="myform">
 				<div class="div1">
 					<div class="form-group">
 						<label for="data-region-name">Area</label>
-						<input type="text" name="data-region-name" class="form-control rounded-0" placeholder="e.g America" required>
+						<input type="text" name="data-region-name" id="data-region-name" class="form-control rounded-0" placeholder="e.g America" required>
 					</div>
 					<div class="form-group">
 						<label for="data-avgAge">Average Age:</label>
-						<input type="text" name="data-avgAge" class="form-control rounded-0" placeholder="22.1" required>
+						<input type="text" name="data-avgAge" id="data-avgAge" class="form-control rounded-0" placeholder="22.1" required>
 					</div>
 					<div class="form-group">
 						<label for="data-avgDailyIncomeInUSD">Average Daily Income In USD</label>
-						<input type="text" name="data-avgDailyIncomeInUSD" class="form-control rounded-0" placeholder="e.g 5" required>
+						<input type="text" name="data-avgDailyIncomeInUSD" id="data-avgDailyIncomeInUSD" class="form-control rounded-0" placeholder="e.g 5" required>
 					</div>
 					<div class="form-group">
 						<label for="data-avgDailyIncomePopulation">Average Daily Income Population</label>
-						<input type="text" name="data-avgDailyIncomePopulation" class="form-control rounded-0" placeholder="e.g 0.12" required>
+						<input type="text" name="data-avgDailyIncomePopulation" id="data-avgDailyIncomePopulation" class="form-control rounded-0" placeholder="e.g 0.12" required>
 					</div>
 	<button type="button" class="btn btn-dark btn-block rounded-0 next" name="">Next</button>
 			</div>
@@ -46,21 +65,21 @@
 				<div class="div2">
 					<div class="form-group">
 						<label for="data-reported-cases">Reported Cases</label>
-						<input type="text" name="data-reported-cases" class="form-control rounded-0" placeholder="e.g 845" required>
+						<input type="text" name="data-reported-cases" id="data-reported-cases" class="form-control rounded-0" placeholder="e.g 845" required>
 					</div>
 					<div class="form-group">
 						<label for="data-population">Population</label>
-						<input type="text" name="data-population" class="form-control rounded-0" placeholder="200" required>
+						<input type="text" name="data-population" id="data-population" class="form-control rounded-0" placeholder="200" required>
 					</div>
 					<div class="form-group">
 						<div class="row">
 							<div class="col-md-6">
 								<label for="data-time-to-elapse">Period</label>
-								<input type="number" min="1" name="data-time-to-elapse" class="form-control rounded-0" required>
+								<input type="number" min="1" name="data-time-to-elapse" id="data-time-to-elapse" class="form-control rounded-0" required>
 							</div>
 							<div class="col-md-6">
 								<label for="data-period-type">Period Type</label>
-								<select name="data-period-type" class="form-control rounded-0" required>
+								<select name="data-period-type" id="data-period-type" class="form-control rounded-0" required>
 									<option>--Select Period Type--</option>
 									<option value="days">days</option>
 									<option value="weeks">weeks</option>
@@ -71,11 +90,10 @@
 					</div>
 					<div class="form-group">
 						<label for="data-total-hospital-beds">Total Hospital Bed</label>
-						<input type="text" name="data-total-hospital-beds" class="form-control rounded-0" placeholder="e.g 40" required>
+						<input type="text" name="data-total-hospital-beds" id="data-total-hospital-beds" class="form-control rounded-0" placeholder="e.g 40" required>
 					</div>
 				<button type="button" class="btn btn-dark btn-block rounded-0 prev" name="">Previous</button>
-					<button class="btn btn-dark btn-block rounded-0" name="data-go-
-	estimate">Estimate</button>
+					<button class="btn btn-dark btn-block rounded-0" name="data-go-estimate" id="data-go-estimate">Estimate</button>
 	
 			</div>
 			<!-- end second form -->
@@ -89,8 +107,11 @@
 </div>
 </body>
 </html>
-<script type="text/javascript" src="js/jquery.min.js"></script>
-<script type="text/javascript">
+<script
+  src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+  integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8="
+  crossorigin="anonymous"></script>
+  <script type="text/javascript">
 	$(function(){
 		$('.div2').hide();
 		$('.next').click(function(){
@@ -100,6 +121,22 @@
 		$('.prev').click(function(){
 			$('.div1').fadeIn();
 			$('.div2').fadeOut();
+		});
+
+
+		$('#data-go-estimate').click(function(e){
+			e.preventDefault();
+			var data = $('#myform').serialize();
+			// console.log(data);
+			$.ajax({
+				url:"https://intrusion-detection-system.000webhostapp.com/api/v1/on-covid-19/",
+				type: 'POST',
+				dataType:'json',
+				data:data,
+				success:function(response){
+					console.log(response);
+				},
+			});
 		});
 	});
 </script>
